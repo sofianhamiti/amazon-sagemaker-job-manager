@@ -1,0 +1,17 @@
+processing:
+    entry_point: src/spark_processing/process.py
+    parameters:
+        file_name: housing.csv
+    instance_count: 2
+    instance_type: ml.m5.2xlarge
+
+training:
+    image_uri: 366243680492.dkr.ecr.eu-west-1.amazonaws.com/example-job:latest
+    source_dir: src/training
+    entry_point: train.py
+    hyperparameters:
+        n_estimators: 150
+        another_param: "ABC"
+    instance_count: 1
+    # instance_type: ml.m5.xlarge
+    instance_type: local # if you want to run job in a container local
