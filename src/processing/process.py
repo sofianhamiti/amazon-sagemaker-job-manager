@@ -1,5 +1,6 @@
 import os
 import logging
+import awswrangler as wr
 
 logging.basicConfig(level=logging.INFO)
 
