@@ -10,5 +10,3 @@ RUN apt-get update \
 # install python dependencies
 RUN pip install --no-cache --upgrade \
     sagemaker-training==4.4.5
-
-RUN pip install --no-cache --upgrade -r requirements.txt

@@ -6,19 +6,13 @@ phases:
       python: 3.9
 
     commands:
-      - pip install --upgrade awscli \
-        botocore \
-        boto3 \
+      - pip install --upgrade boto3 \
         pyyaml \
         sagemaker==2.132.0
 
-  run-spark-job:
+  run-makefile:
     commands:
-      - python run/run_spark_job.py
-
-  run-training-job:
-    commands:
-      - python run/run_training_job.py
+      - make all
 
 
 
