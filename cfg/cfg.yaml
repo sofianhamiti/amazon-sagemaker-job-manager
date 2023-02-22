@@ -10,7 +10,9 @@ processing:
 spark:
     entry_point: src/spark/process.py
     parameters:
-        example: housing.csv
+        s3_input: s3a://sagemaker-eu-west-1-366243680492/spark-example/netflix_titles.csv
+        s3_output: s3a://sagemaker-eu-west-1-366243680492/spark-example/netflix_titles.parquet
+        example: ABC
     instance_count: 2
     instance_type: ml.m5.2xlarge
 
