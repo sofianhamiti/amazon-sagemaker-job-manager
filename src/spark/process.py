@@ -6,8 +6,6 @@ logging.basicConfig(level=logging.INFO)
 
 
 def prepare_data():
-    spark = SparkSession.builder.appName("PySparkApp").getOrCreate()
-
     spark = (
         SparkSession.builder.appName("PySparkApp")
         .config(
