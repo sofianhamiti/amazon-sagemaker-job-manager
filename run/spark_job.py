@@ -14,5 +14,6 @@ if __name__ == "__main__":
 
     spark_job.run(
         submit_app=config["spark"]["entry_point"],
+        submit_files=[config["spark"]["sql_script"]],
         logs=False,
     )

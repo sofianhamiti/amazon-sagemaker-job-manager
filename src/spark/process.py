@@ -19,22 +19,31 @@ def prepare_data():
         .getOrCreate()
     )
 
+
     # DOWNLOAD DATA FROM S3 INPUT LOCATION
-    print("DOWNLOADING DATA NOW")
-    s3_input = os.environ["s3_input"]
-    df = spark.read.csv(s3_input, header=True)
+    # print("DOWNLOADING DATA NOW")
+    # s3_input = os.environ["s3_input"]
+    # df = spark.read.csv(s3_input, header=True)
 
     # ==================================================
-    # ============= DO PROCESSING HERE =================
+    # ============= DO SQL PROCESSING HERE =================
     # ==================================================
+
+    print("READING SQL QUERY FROM .SQL FILE")
+    with open("/opt/ml/processing/input/files/script.sql", "r") as sql_script:
+        sql_query = sql_script.read()
+
+    print("RUNNING SQL QUERY")
+    # Execute the SQL query using PySpark
+    df = spark.sql(sql_query)
+
+    # Show the results
+    df.show()
 
     # UPLOAD PROCESSED DATA TO S3 OUTPUT LOCATION
-    print("UPLOADING DATA TO S3")
-    s3_output = os.environ["s3_output"]
-    df.write.parquet(
-        s3_output,
-        mode="overwrite",
-    )
+    # print("UPLOADING DATA TO S3")
+    # s3_output = os.environ["s3_output"]
+    # df.write.parquet(s3_output, mode="overwrite")
 
 
 if __name__ == "__main__":

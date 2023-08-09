@@ -9,6 +9,7 @@ processing:
 
 spark:
     entry_point: src/spark/process.py
+    sql_script: src/spark/script.sql
     parameters:
         s3_input: s3a://sagemaker-eu-west-1-366243680492/spark-example/netflix_titles.csv
         s3_output: s3a://sagemaker-eu-west-1-366243680492/spark-example/netflix_titles.parquet
