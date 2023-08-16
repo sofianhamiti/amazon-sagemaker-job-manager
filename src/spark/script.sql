@@ -1,4 +1,4 @@
 SELECT
-    'John' AS first_name,
-    'Doe' AS last_name,
-    30 AS age;
+    ${first_name} AS first_name,
+    ${last_name} AS last_name,
+    ${age} AS age;

@@ -3,7 +3,7 @@ processing:
     source_dir: src/processing
     entry_point: process.py
     parameters:
-        example: housing.csv
+        example: "housing.csv"
     instance_count: 1
     instance_type: ml.m5.2xlarge
 
@@ -11,9 +11,11 @@ spark:
     entry_point: src/spark/process.py
     sql_script: src/spark/script.sql
     parameters:
-        s3_input: s3a://sagemaker-eu-west-1-366243680492/spark-example/netflix_titles.csv
-        s3_output: s3a://sagemaker-eu-west-1-366243680492/spark-example/netflix_titles.parquet
-        example: ABC
+        s3_input: "s3a://sagemaker-eu-west-1-366243680492/spark-example/netflix_titles.csv"
+        s3_output: "s3a://sagemaker-eu-west-1-366243680492/spark-example/netflix_titles.parquet"
+        first_name: "John"
+        last_name: "Doe"
+        age: "30"
     instance_count: 2
     instance_type: ml.m5.2xlarge
 
@@ -22,7 +24,7 @@ training:
     source_dir: src/training
     entry_point: train.py
     parameters:
-        n_estimators: 150
+        n_estimators: "150"
         another_param: "ABC"
     instance_count: 1
     instance_type: ml.m5.xlarge

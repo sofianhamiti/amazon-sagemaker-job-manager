@@ -37,7 +37,7 @@ def get_processing_job(iam_role, cfg):
 def get_spark_job(iam_role, cfg):
     spark_processor = PySparkProcessor(
         role=iam_role,
-        framework_version="3.3",
+        framework_version="3.2",
         env=cfg["parameters"],
         instance_count=cfg["instance_count"],
         instance_type=cfg["instance_type"],

@@ -2,7 +2,6 @@ import os
 import logging
 import argparse
 
-
 logging.basicConfig(level=logging.INFO)
 
 
@@ -11,6 +10,7 @@ def train(args):
     # ==================================================
     # =============== DO TRAINING HERE =================
     # ==================================================
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

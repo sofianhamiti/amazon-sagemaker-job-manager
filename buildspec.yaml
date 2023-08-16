@@ -8,7 +8,7 @@ phases:
     commands:
       - pip install --upgrade boto3 \
         pyyaml \
-        sagemaker==2.155.0
+        sagemaker==2.177.0
 
   run-makefile:
     commands:

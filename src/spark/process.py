@@ -1,6 +1,8 @@
 import os
 import logging
+from string import Template
 from pyspark.sql import SparkSession
+
 
 logging.basicConfig(level=logging.INFO)
 
@@ -19,7 +21,6 @@ def prepare_data():
         .getOrCreate()
     )
 
-
     # DOWNLOAD DATA FROM S3 INPUT LOCATION
     # print("DOWNLOADING DATA NOW")
     # s3_input = os.environ["s3_input"]
@@ -31,9 +32,19 @@ def prepare_data():
 
     print("READING SQL QUERY FROM .SQL FILE")
     with open("/opt/ml/processing/input/files/script.sql", "r") as sql_script:
-        sql_query = sql_script.read()
+        sql_query_template = sql_script.read()
 
-    print("RUNNING SQL QUERY")
+    print("ADDING ENVIRONMENT VARIABLES' VALUES TO THE SQL QUERY")
+    template = Template(sql_query_template)
+    sql_query = template.safe_substitute(
+        first_name=f"'{os.environ['first_name']}'",
+        last_name=f"'{os.environ['last_name']}'",
+        age=f"'{os.environ['age']}'",
+    )
+
+    print(sql_query)
+
+    print("RUNNING THE SQL QUERY")
     # Execute the SQL query using PySpark
     df = spark.sql(sql_query)
 
